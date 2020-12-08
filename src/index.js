@@ -3,11 +3,19 @@ import printMe from './print';
 function component(){
 	var element = document.createElement('div');
 	var btn = document.createElement('button');
-	element.innerHTML = _.join(['hello','webpack',' ','sad！你看到美女了吗'],'');
+	element.innerHTML = _.join(['hello','webpack',' ','sad！hot'],'');
 	btn.innerHTML = 'Click me and check the console!';
 	btn.onclick = printMe;
 	element.appendChild(btn);
 	return element;
 }
+let element = component();
+document.body.appendChild(element);
 
-document.body.appendChild(component());
+if(module.hot){
+	module.hot.accept('./print.js',function(){
+		document.body.removeChild(element);
+		element = component();
+		document.body.appendChild(element);
+	});
+}
