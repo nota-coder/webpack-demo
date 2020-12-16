@@ -14,6 +14,14 @@ module.exports = {
         contentBase:path.join(__dirname,'dist'),
         hot:true
     },
+    module: {
+        rules: [
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }
+     ]
+    },
     plugins:[
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ['*.bundle.js']

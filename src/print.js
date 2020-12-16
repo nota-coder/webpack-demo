@@ -1,4 +1,4 @@
-import sum from './fun';
+import {sum} from './fun';
 export default function printMe(){
     console.log(sum);
     let s = sum( 1 ,11);
